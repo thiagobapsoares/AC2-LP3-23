@@ -1,0 +1,94 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      AC2 - Logística
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-list-header>Condições:</ion-list-header>
+    <ion-item>
+      <ion-label>Digite o peso (kg):</ion-label>
+      <ion-input (ionInput)="getValue($event, 'p' )"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Digite a distância (km):</ion-label>
+      <ion-input (ionInput)="getValue($event, 'd')"></ion-input>
+    </ion-item>
+
+    <ion-radio-group (ionChange)="tipo_envio = $event;">
+      <ion-list-header>Selecione o tipo de envio:</ion-list-header>
+      <ion-item>
+        <ion-label>Regular</ion-label>
+        <ion-radio color="tertiary" value="Comum"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Expresso</ion-label>
+        <ion-radio color="tertiary" value="Expressa"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Agendado</ion-label>
+        <ion-radio color="tertiary" value="Agendado"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+
+    <ion-button color="tertiary" (click)="Calcular()" expand="block">Calcular</ion-button>
+
+    <ion-item>
+      <p class="ion-text-center destaque">R$ {{ ValorComDesconto === undefined ?  '' : ValorComDesconto}}</p>
+    </ion-item>
+  </ion-list>
+
+  <ion-list-header>Tabela de preços:</ion-list-header>
+  <ion-grid [fixed]="true">
+    <ion-row>
+      <ion-col class="ion-col"><strong>Peso</strong></ion-col>
+      <ion-col class="ion-col"><strong>Desconto</strong></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-col">10kg a 49kg</ion-col>
+      <ion-col class="ion-col">{{ desconto_front.TabelaDesconto.kg10 }}% de desconto</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-col">50kg a 99kg</ion-col>
+      <ion-col class="ion-col">{{ desconto_front.TabelaDesconto.kg50 }}% de desconto</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-col">100kg ou mais</ion-col>
+      <ion-col class="ion-col">{{ desconto_front.TabelaDesconto.kg100 }}% de desconto</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid [fixed]="true">
+    <ion-row>
+      <ion-col><strong>Distância</strong></ion-col>
+      <ion-col><strong>Valor</strong></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Distância * 0.6 + Valor Final</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid [fixed]="true">
+    <ion-row>
+      <ion-col><strong>Envio</strong></ion-col>
+      <ion-col><strong>Valor</strong></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Regular</ion-col>
+      <ion-col>Preço normal</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Expresso</ion-col>
+      <ion-col>Preço+tributos * 1.05%</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Agendado</ion-col>
+      <ion-col>Preço+tributos * 0.8%</ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
