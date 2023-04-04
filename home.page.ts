@@ -68,7 +68,7 @@ export class HomePage {
     }
     this.desconto = (this.desconto * this.peso) / 100
 
-    this.valor_final = (this.peso * multiplicador + (this.distancia * 0.6)) + tributo
+    this.valor_final = (this.peso * multiplicador + (this.distancia * 0.55)) + tributo
 
     this.ValorComDesconto = this.valor_final - this.desconto
 
