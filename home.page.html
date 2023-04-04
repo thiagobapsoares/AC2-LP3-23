@@ -8,7 +8,7 @@
 
 <ion-content [fullscreen]="true">
   <ion-list>
-    <ion-list-header>Condições:</ion-list-header>
+    <ion-list-header>Digite as condições:</ion-list-header>
     <ion-item>
       <ion-label>Digite o peso (kg):</ion-label>
       <ion-input (ionInput)="getValue($event, 'p' )"></ion-input>
@@ -68,7 +68,7 @@
       <ion-col><strong>Valor</strong></ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>Distância * 0.6 + Valor Final</ion-col>
+      <ion-col>Distância * 0.55 + Valor Final</ion-col>
     </ion-row>
   </ion-grid>
 
@@ -83,12 +83,11 @@
     </ion-row>
     <ion-row>
       <ion-col>Expresso</ion-col>
-      <ion-col>Preço+tributos * 1.05%</ion-col>
+      <ion-col>Preço+tributos * 1.2%</ion-col>
     </ion-row>
     <ion-row>
       <ion-col>Agendado</ion-col>
-      <ion-col>Preço+tributos * 0.8%</ion-col>
+      <ion-col>Preço+tributos * 1.1%</ion-col>
     </ion-row>
   </ion-grid>
-
 </ion-content>
